@@ -1,0 +1,167 @@
+<% layout('./layouts/boilerplate') %>
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Profile</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">User Profile</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <!-- Profile Image -->
+                        <div class="card card-primary card-outline">
+                            <div class="card-body box-profile">
+                                <div class="text-center">
+                                    <img class="profile-user-img img-fluid img-circle" src="/dist/img/avatar.png" alt="User profile picture">
+                                </div>
+
+                                <h3 class="profile-username text-center">
+                                    <%= student.firstname + ' ' + student.lastname %>
+                                </h3>
+
+                                <p class="text-muted text-center">ID NO:
+                                    <%= student.stdID %>
+                                </p>
+
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+
+                        <!-- About Me Box -->
+                        <div class="card card-primary ">
+                            <div class="card-header">
+                                <h3 class="card-title">About
+                                    <%= student.firstname %>
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+
+                                <ul class="list-group list-group-unbordered mb-3">
+
+                                    <li class="list-group-item">
+                                        <b>Gender:</b>
+                                        <a class="float-right">
+                                            <%= student.gender%>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Age: </b>
+                                        <a class="float-right">
+                                            <%= student.age %>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Class:</b> <a class="float-right">102 Room</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Parent: </b> <a class="float-right">Hooyada Magaceeda</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Teacher: </b> <a class="float-right">Anas Yusuf Ali</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Status: </b>
+                                        <a class="float-right">
+                                            <%= student.status %>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header p-2">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <!-- //ACTIVITY SECTION -->
+                                    <div class="active tab-pane" id="activity">
+                                        <h1>Here is Activity</h1>
+                                    </div>
+
+                                    <!-- //TIMELINE SECTION -->
+                                    <div class="tab-pane" id="timeline">
+                                        <!-- The timeline -->
+                                        <h1>Here is time line</h1>
+                                    </div>
+
+                                    <!-- //SETTINGS SECTION -->
+                                    <div class="tab-pane" id="settings">
+                                        <form id="quickForm" action="/students" method="POST">
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="firstname">Firstname</label>
+                                                    <input type="text" name="student[firstname]" class="form-control" id="fristname" placeholder="Enter firstname">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="lastname">Lastname</label>
+                                                    <input type="text" name="student[lastname]" class="form-control" id="lastname" placeholder="Lastname">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="phone">Phone</label>
+                                                    <input type="number" name="student[phone]" class="form-control" id="phone" placeholder="Phone (+252)">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="age">Age</label>
+                                                    <input type="number" name="student[age]" class="form-control" id="age" placeholder="Age">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="gender">Gender</label>
+                                                    <select id="gender" name="student[gender]" class="form-control custom-select">
+                                                  <option selected disabled>Select one</option>
+                                                  <option value="male">Male</option>
+                                                  <option value="female">Female</option>
+                                                </select>
+                                                </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                </div>
+                                <!-- /.tab-content -->
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>

@@ -4,6 +4,7 @@ const path = require('path');
 const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
 const Student = require('./models/students/student');
+const Parent = require('./models/parents/Parent')
 
 
 const db = mongoose.connect('mongodb://localhost:27017/expressCrud', {
@@ -35,19 +36,23 @@ app.get('/', (req, res) => {
 
 app.get('/students', async(req, res) => {
     const students = await Student.find({})
-    console.log(students)
     res.render('students/students', { students })
 });
 
 app.get('/students/create', (req, res) => {
-    res.render('students/addStudent')
+    res.render('students/addStudent');
+});
+
+app.get('/students/:id/profile', async(req, res) => {
+    const { id } = req.params
+    const student = await Student.findById(id);
+    res.render('students/StudentProfile', { student })
 });
 
 app.post('/students', async(req, res) => {
-    console.log(req.body.student, req.body)
     const std = new Student(req.body.student)
     await std.save()
-    res.redirect('/students/')
+    res.redirect('/students/');
 });
 
 app.get('/teachers', (req, res) => {
@@ -66,8 +71,9 @@ app.get('/classes/create', (req, res) => {
     res.render('classes/addClass')
 });
 
-app.get('/parents', (req, res) => {
-    res.render('parents/parents')
+app.get('/parents', async(req, res) => {
+    const parents = await Parent.find({});
+    res.render('parents/parents', { parents })
 });
 
 app.get('/parents/create', (req, res) => {
