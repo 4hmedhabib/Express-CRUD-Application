@@ -5,13 +5,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Profile</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">User Profile</li>
-                        </ol>
+                        <h1>Parent Profile</h1>
                     </div>
                 </div>
             </div>
@@ -23,20 +17,19 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
-
                         <!-- Profile Image -->
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <img class="profile-user-img img-fluid img-circle" src="/dist/img/avatar.png" alt="User profile picture">
+                                    <img class="profile-user-img img-fluid img-circle" src="/dist/img/avatar3.png" alt="User profile picture">
                                 </div>
 
                                 <h3 class="profile-username text-center">
-                                    <%= student.firstname + ' ' + student.lastname %>
+                                    <%= parent.firstname + ' ' + parent.lastname %>
                                 </h3>
 
                                 <p class="text-muted text-center">ID NO:
-                                    <%= student.stdID %>
+                                    <%= parent.phone %>
                                 </p>
 
                             </div>
@@ -48,7 +41,7 @@
                         <div class="card card-primary ">
                             <div class="card-header">
                                 <h3 class="card-title">About
-                                    <%= student.firstname %>
+                                    <%= parent.firstname %>
                                 </h3>
                             </div>
                             <!-- /.card-header -->
@@ -58,39 +51,25 @@
 
                                     <li class="list-group-item">
                                         <b>Gender:</b>
-                                        <a class="float-right text-capitalize">
-                                            <%= student.gender%>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Age: </b>
                                         <a class="float-right">
-                                            <%= student.age %>
+                                            <%= parent.gender%>
                                         </a>
                                     </li>
+
                                     <li class="list-group-item">
                                         <b>Class:</b> <a class="float-right">102 Room</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Parent: </b>
-                                        <a class="float-right">
-                                            <%= student.parent.firstname + ' ' +  student.parent.lastname%>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Phone: </b>
-                                        <a class="float-right">
-                                            <%= student.parent.phone%>
-                                        </a>
+                                        <b>Parent: </b> <a class="float-right">Hooyada Magaceeda</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Teacher: </b> <a class="float-right">Anas Yusuf Ali</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Status: </b>
-                                        <span class="badge float-right <%= student.status === true ? 'badge-success' : 'badge-danger' %> ">
-                                            <%= student.status === true ? 'Active' : 'InActive' %>
-                                         </span>
+                                        <a class="float-right">
+                                            <%= parent.status %>
+                                        </a>
                                     </li>
                                 </ul>
 
@@ -104,23 +83,82 @@
                         <div class="card">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
-                                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="#student-list" data-toggle="tab">Students List</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
                                 </ul>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="tab-content">
-                                    <!-- //ACTIVITY SECTION -->
-                                    <div class="active tab-pane" id="activity">
-                                        <h1>Here is Activity</h1>
-                                    </div>
+                                    <!-- //student-list SECTION -->
+                                    <div class="active tab-pane" id="student-list">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h1 class="card-title">Total Students:
+                                                    <%= parent.students.length %>
+                                                </h1>
+                                            </div>
+                                        </div>
+                                        <table class="table table-striped projects">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 3%">
+                                                        #
+                                                    </th>
+                                                    <th style="width: 20%">
+                                                        Fullname
+                                                    </th>
+                                                    <th style="width: 10%">
+                                                        Gender
+                                                    </th>
+                                                    <th style="width: 10%">
+                                                        Age
+                                                    </th>
+                                                    <th style="width: 8%" class="">
+                                                        Class
+                                                    </th>
+                                                    <th style="width: 8%" class="text-center">
+                                                        Status
+                                                    </th>
+                                                    <th style="width: 15%" class="text-center">
 
-                                    <!-- //TIMELINE SECTION -->
-                                    <div class="tab-pane" id="timeline">
-                                        <!-- The timeline -->
-                                        <h1>Here is time line</h1>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% parent.students.forEach((student, index)=> { %>
+                                                    <tr>
+                                                        <td>
+                                                            <%= index + 1 %>
+                                                        </td>
+                                                        <td>
+                                                            <%= student.firstname + ' ' + student.lastname %>
+                                                        </td>
+                                                        <td class="text-capitalize">
+                                                            <%= student.gender %>
+                                                        </td>
+
+                                                        <td>
+                                                            <%= student.age %>
+                                                        </td>
+                                                        <td>
+                                                            102
+                                                        </td>
+                                                        <td class="project-state">
+                                                            <span class="badge <%= student.status === true ? 'badge-success' : 'badge-danger' %> ">
+                                                                <%= student.status === true ? 'Active' : 'InActive' %>
+                                                             </span>
+                                                        </td>
+                                                        <td>
+                                                            <a class="btn btn-primary btn-block" href="/students/<%= student._id %>/profile">
+                                                                <i class="fas fa-folder">
+                                                      </i> View
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <% }) %>
+                                            </tbody>
+                                        </table>
                                     </div>
 
                                     <!-- //SETTINGS SECTION -->

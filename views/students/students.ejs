@@ -40,42 +40,44 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% for(let student of students){ %>
-                                            <tr>
-                                                <td>
-                                                    <%= student.stdID %>
-                                                </td>
-                                                <td>
-                                                    <%= student.firstname + ' ' + student.lastname %>
-                                                </td>
-                                                <td>
-                                                    <%= student.phone %>
-                                                </td>
-                                                <td>
-                                                    <%= student.age %>
-                                                </td>
-                                                <td>
-                                                    <%= student.gender %>
-                                                </td>
-                                                <td>
-                                                    <%= student.status %>
-                                                </td>
-                                                <td class="project-actions text-center">
-                                                    <a class="btn btn-primary btn-sm" href="/students/<%= student._id%>/profile">
-                                                        <i class="fas fa-folder">
+                                        <% if(students.length !== 0){ %>
+                                            <% for(let student of students){ %>
+                                                <tr>
+                                                    <td>
+                                                        <%= student.stdID %>
+                                                    </td>
+                                                    <td>
+                                                        <%= student.firstname + ' ' + student.lastname %>
+                                                    </td>
+                                                    <td>
+                                                        <%= student.phone %>
+                                                    </td>
+                                                    <td>
+                                                        <%= student.age %>
+                                                    </td>
+                                                    <td>
+                                                        <%= student.gender %>
+                                                    </td>
+                                                    <td>
+                                                        <%= student.status %>
+                                                    </td>
+                                                    <td class="project-actions text-center">
+                                                        <a class="btn btn-primary btn-sm" href="/students/<%= student._id%>/profile">
+                                                            <i class="fas fa-folder">
                                                     </i> View
-                                                    </a>
-                                                    <a class="btn btn-info btn-sm" href="#">
-                                                        <i class="fas fa-pencil-alt">
+                                                        </a>
+                                                        <a class="btn btn-info btn-sm" href="#">
+                                                            <i class="fas fa-pencil-alt">
                                                     </i> Edit
-                                                    </a>
-                                                    <a class="btn btn-danger btn-sm" href="#">
-                                                        <i class="fas fa-trash">
+                                                        </a>
+                                                        <a class="btn btn-danger btn-sm" href="#">
+                                                            <i class="fas fa-trash">
                                                     </i> Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <% } %>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                                    <% } %>
                                     </tbody>
                                     <tfoot>
                                         <tr>

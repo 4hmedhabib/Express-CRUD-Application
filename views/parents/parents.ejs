@@ -36,7 +36,6 @@
                                                 <th>Phones</th>
                                                 <th>Gender</th>
                                                 <th>Status</th>
-                                                <th class="text-center">Tools For Edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -51,27 +50,26 @@
                                                     <td>
                                                         <%= parent.phone %>
                                                     </td>
-                                                    <td>
-                                                        <%= parent.age %>
-                                                    </td>
-                                                    <td>
+                                                    <td class="text-capitalize">
                                                         <%= parent.gender %>
                                                     </td>
                                                     <td>
-                                                        <%= parent.status %>
+                                                        <span class="badge <%= parent.status === true ? 'badge-success' : 'badge-danger' %> ">
+                                                                <%= parent.status === true ? 'Active' : 'InActive' %>
+                                                             </span>
                                                     </td>
                                                     <td class="project-actions text-center">
-                                                        <a class="btn btn-primary btn-sm" href="/students//profile">
+                                                        <a class="btn btn-primary btn-sm" href="/parents/<%= parent._id %>/profile">
                                                             <i class="fas fa-folder">
-                                                     </i> View
+                                                  </i> View
                                                         </a>
-                                                        <a class="btn btn-info btn-sm" href="#">
+                                                        <a class="btn btn-info btn-sm" href="/parents/<%= parent._id %>/edit">
                                                             <i class="fas fa-pencil-alt">
-                                                    </i> Edit
+                                                  </i> Edit
                                                         </a>
                                                         <a class="btn btn-danger btn-sm" href="#">
                                                             <i class="fas fa-trash">
-                                                    </i> Delete
+                                                  </i> Delete
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -82,10 +80,8 @@
                                                 <th>#</th>
                                                 <th>Full Name</th>
                                                 <th>Phones</th>
-                                                <th>Age</th>
                                                 <th>Gender</th>
                                                 <th>Status</th>
-                                                <th class="text-center">Tools For Edit</th>
                                             </tr>
                                         </tfoot>
                                     </table>

@@ -23,13 +23,14 @@ const studentSchema = new Schema({
         type: Number,
         required: true
     },
-    phone: {
-        type: Number,
-        required: true
-    },
     status: {
         type: Boolean,
         default: true,
+    },
+    parent: {
+        type: Schema.Types.ObjectId,
+        ref: 'Parent',
+        required: true
     }
 });
 

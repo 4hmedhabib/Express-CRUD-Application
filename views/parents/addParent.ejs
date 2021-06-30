@@ -26,23 +26,23 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form id="quickForm" action="/students" method="POST">
+                            <form id="quickForm" action="/parents" method="POST">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="firstname">Firstname</label>
-                                        <input type="text" name="student[firstname]" class="form-control" id="fristname" placeholder="Enter firstname">
+                                        <input type="text" name="parent[firstname]" class="form-control" id="fristname" placeholder="Enter firstname">
                                     </div>
                                     <div class="form-group">
                                         <label for="lastname">Lastname</label>
-                                        <input type="text" name="student[lastname]" class="form-control" id="lastname" placeholder="Lastname">
+                                        <input type="text" name="parent[lastname]" class="form-control" id="lastname" placeholder="Lastname">
                                     </div>
                                     <div class="form-group">
                                         <label for="phone">Phone</label>
-                                        <input type="number" name="student[phone]" class="form-control" id="phone" placeholder="Phone (+252)">
+                                        <input type="number" min="12" max="12" name="parent[phone]" class="form-control" id="phone" placeholder="Phone (+252)">
                                     </div>
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
-                                        <select id="gender" name="student[gender]" class="form-control custom-select">
+                                        <select id="gender" name="parent[gender]" class="form-control custom-select">
                                       <option selected disabled>Select one</option>
                                       <option value="male">Male</option>
                                       <option value="female">Female</option>

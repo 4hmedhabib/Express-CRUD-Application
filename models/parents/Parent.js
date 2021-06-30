@@ -15,19 +15,21 @@ const parentSchema = new Schema({
         enum: ['male', 'female'],
         required: true
     },
-    age: {
-        type: Number,
-        required: true
-    },
     phone: {
         type: Number,
         required: true,
-        unique: true
+        unique: true,
     },
     status: {
         type: Boolean,
         default: true,
-    }
+    },
+    students: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Student'
+        }
+    ]
 });
 
 module.exports = mongoose.model('Parent', parentSchema)
