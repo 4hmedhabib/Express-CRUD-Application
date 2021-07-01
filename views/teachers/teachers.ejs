@@ -32,65 +32,63 @@
                                             <th>#</th>
                                             <th>Full Name</th>
                                             <th>Phones</th>
-                                            <th>Age</th>
+                                            <th>Address</th>
+                                            <th>Class</th>
                                             <th>Gender</th>
                                             <th>Status</th>
                                             <th class="text-center">Tools For Edit</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Anas Yusuf Ali</td>
-                                            <td>0634827328</td>
-                                            <td>23</td>
-                                            <td>Male</td>
-                                            <td>True</td>
-                                            <td class="project-actions text-center">
-                                                <a class="btn btn-primary btn-sm" href="#">
-                                                    <i class="fas fa-folder">
-                                                </i> View
-                                                </a>
-                                                <a class="btn btn-info btn-sm" href="#">
-                                                    <i class="fas fa-pencil-alt">
-                                                </i> Edit
-                                                </a>
-                                                <a class="btn btn-danger btn-sm" href="#">
-                                                    <i class="fas fa-trash">
-                                                </i> Delete
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>002</td>
-                                            <td>Ahmed Mahdi Du'ale</td>
-                                            <td>063483559</td>
-                                            <td>19</td>
-                                            <td>Female</td>
-                                            <td>True</td>
-                                            <td class="project-actions text-center">
-                                                <a class="btn btn-primary btn-sm" href="#">
-                                                    <i class="fas fa-folder">
-                                                </i> View
-                                                </a>
-                                                <a class="btn btn-info btn-sm" href="#">
-                                                    <i class="fas fa-pencil-alt">
-                                                </i> Edit
-                                                </a>
-                                                <a class="btn btn-danger btn-sm" href="#">
-                                                    <i class="fas fa-trash">
-                                                </i> Delete
-                                                </a>
-                                            </td>
-                                        </tr>
-
+                                        <% if(teachers){ %>
+                                            <% teachers.forEach((teacher, i)=> { %>
+                                                <tr>
+                                                    <td>
+                                                        <%= i + 1  %>
+                                                    </td>
+                                                    <td>
+                                                        <%= teacher.firstname + ' ' + teacher.lastname %>
+                                                    </td>
+                                                    <td>
+                                                        <%= teacher.phone %>
+                                                    </td>
+                                                    <td class="text-capitalize">
+                                                        <%= teacher.address %>
+                                                    </td>
+                                                    <td>
+                                                        <%= teacher.classes[0].name %>
+                                                    </td>
+                                                    <td class="text-capitalize">
+                                                        <%= teacher.gender %>
+                                                    </td>
+                                                    <td><span class="badge <%= teacher.status === true ? 'badge-success' : 'badge-danger' %> ">
+                                                        <%= teacher.status === true ? 'Active' : 'InActive' %>
+                                                     </span></td>
+                                                    <td class="project-actions text-center">
+                                                        <a class="btn btn-primary btn-sm" href="/teachers/<%= teacher._id %>/profile ">
+                                                            <i class="fas fa-folder">
+                                                    </i> View
+                                                        </a>
+                                                        <a class="btn btn-info btn-sm" href="#">
+                                                            <i class="fas fa-pencil-alt">
+                                                    </i> Edit
+                                                        </a>
+                                                        <a class="btn btn-danger btn-sm" href="#">
+                                                            <i class="fas fa-trash">
+                                                    </i> Delete
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <% }) %>
+                                                    <%}%>
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
                                             <th>Full Name</th>
                                             <th>Phones</th>
-                                            <th>Age</th>
+                                            <th>Address</th>
+                                            <th>Class</th>
                                             <th>Gender</th>
                                             <th>Status</th>
                                             <th class="text-center">Tools For Edit</th>

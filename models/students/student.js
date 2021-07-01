@@ -19,6 +19,14 @@ const studentSchema = new Schema({
         enum: ['male', 'female'],
         required: true
     },
+    title: {
+        type: String,
+        default: 'student'
+    },
+    class: {
+        type: Schema.Types.ObjectId,
+        ref: 'Class'
+    },
     age: {
         type: Number,
         required: true

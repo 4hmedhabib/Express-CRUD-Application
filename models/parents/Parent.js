@@ -6,6 +6,10 @@ const parentSchema = new Schema({
         type: String,
         required: true
     },
+    title: {
+        type: String,
+        default: 'parent'
+    },
     lastname: {
         type: String,
         required: true

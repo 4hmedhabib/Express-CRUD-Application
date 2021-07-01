@@ -26,7 +26,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form id="quickForm" action="/students" method="POST">
+                            <form id="quickForm" action="<%= parent ? '/students/' +parent._id : '/students' %>" method="POST">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="firstname">Firstname</label>
@@ -38,7 +38,24 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="phone">Phone</label>
-                                        <input type="number" name="student[phone]" class="form-control" id="phone" placeholder="Phone (+252)">
+                                        <% if(parent) { %>
+                                            <input type="text" name="student[phone]" class="form-control" id="phone" value="<%= parent.phone %>" readonly>
+
+                                            <% }else{ %>
+                                                <input type="number" name="student[phone]" class="form-control" id="phone" placeholder="Phone (+252)">
+                                                <% } %>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gender">Class: </label>
+                                        <select id="gender" name="student[class]" class="form-control custom-select">
+                                      <option selected disabled>Select one</option>
+                                      <% if(classes){ %> 
+                                        <% for(let clss of classes){ %> 
+                                            <option value="<%= clss.name %>"><%= clss.name %></option>
+                                          <%}%>
+                                        <%}%>
+                                    </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="age">Age</label>

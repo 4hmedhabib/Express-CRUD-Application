@@ -5,11 +5,9 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Parent Profile</h1>
+                        <h1>Class Profile</h1>
                     </div>
-                    <div class="col-sm-6 text-right">
-                        <a href="/students/<%= parent._id %>/create" type="button" class="btn btn-primary text-bold"><i class="fa fa-plus-circle mr-1"></i>Add New Student</a>
-                    </div>
+
                 </div>
             </div>
             <!-- /.container-fluid -->
@@ -20,18 +18,20 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
+
                         <!-- Profile Image -->
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <img class="profile-user-img img-fluid img-circle" src="/dist/img/avatar3.png" alt="User profile picture">
+                                    <img class="profile-user-img img-fluid img-circle" src="/dist/img/avatar.png" alt="User profile picture">
                                 </div>
 
                                 <h3 class="profile-username text-center">
-                                    <%= parent.firstname + ' ' + parent.lastname %>
+                                    <%= clss.name %>
                                 </h3>
 
-                                <p class="text-muted text-center lead">Parent
+                                <p class="text-muted text-center text-capitalize">
+                                    <%= clss.title %>
                                 </p>
 
                             </div>
@@ -43,38 +43,49 @@
                         <div class="card card-primary ">
                             <div class="card-header">
                                 <h3 class="card-title">About
-                                    <%= parent.firstname %>
+                                    <%= clss.title %>
                                 </h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
 
                                 <ul class="list-group list-group-unbordered mb-3">
+
                                     <li class="list-group-item">
-                                        <b>Id No:</b>
-                                        <span class="float-right text-capitalize lead">
-                                            <%= parent.phone%>
-                                        </span>
+                                        <b>Students: </b>
+                                        <a class="float-right">
+                                            <%= clss.students.length %>
+                                        </a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Gender:</b>
-                                        <span class="float-right text-capitalize lead">
-                                            <%= parent.gender%>
-                                        </span>
+                                        <b>Shift:</b>
+                                        <a class="float-right text-capitalize">
+                                            <%= clss.section %>
+                                        </a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Phone: </b>
-                                        <span class="float-right text-capitalize lead">
-                                            <%= parent.phone %>
-                                        </span>
+                                        <b>Teacher:</b>
+                                        <a class="float-right">
+                                            <%= clss.teacher.firstname + ' ' +  clss.teacher.lastname%>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Details: </b>
+                                        <a class="float-right">
+                                            <%= clss.details%>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Teacher Phone: </b>
+                                        <a class="float-right">
+                                            <%= clss.teacher.phone %>
+                                        </a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Status: </b>
-                                        <a class="float-right">
-                                            <span class="badge <%= parent.status === true ? 'badge-success' : 'badge-danger' %> ">
-                                                <%= parent.status === true ? 'Active' : 'InActive' %>
-                                             </span>
-                                        </a>
+                                        <span class="badge float-right <%= clss.status === true ? 'badge-success' : 'badge-danger' %> ">
+                                            <%= clss.status === true ? 'Active' : 'InActive' %>
+                                         </span>
                                     </li>
                                 </ul>
 
@@ -88,84 +99,79 @@
                         <div class="card">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
-                                    <li class="nav-item"><a class="nav-link active" href="#student-list" data-toggle="tab">Students List</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="#students" data-toggle="tab">Students</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
                                 </ul>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="tab-content">
-                                    <!-- //student-list SECTION -->
-                                    <div class="active tab-pane" id="student-list">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h1 class="card-title">Total Students:
-                                                    <%= parent.students.length %>
-                                                </h1>
-                                            </div>
-                                        </div>
-                                        <table class="table table-striped projects">
-                                            <thead>
-                                                <tr>
-                                                    <th style="width: 3%">
-                                                        #
-                                                    </th>
-                                                    <th style="width: 20%">
-                                                        Fullname
-                                                    </th>
-                                                    <th style="width: 10%">
-                                                        Gender
-                                                    </th>
-                                                    <th style="width: 10%">
-                                                        Age
-                                                    </th>
-                                                    <th style="width: 8%" class="">
-                                                        Class
-                                                    </th>
-                                                    <th style="width: 8%" class="text-center">
-                                                        Status
-                                                    </th>
-                                                    <th style="width: 15%" class="text-center">
+                                    <!-- //ACTIVITY SECTION -->
+                                    <div class="active tab-pane" id="students">
+                                        <div class="active tab-pane" id="student-list">
 
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <% parent.students.forEach((student, index)=> { %>
+                                            <table class="table table-striped projects">
+                                                <thead>
                                                     <tr>
-                                                        <td>
-                                                            <%= index + 1 %>
-                                                        </td>
-                                                        <td>
-                                                            <%= student.firstname + ' ' + student.lastname %>
-                                                        </td>
-                                                        <td class="text-capitalize">
-                                                            <%= student.gender %>
-                                                        </td>
+                                                        <th style="width: 3%">
+                                                            #
+                                                        </th>
+                                                        <th style="width: 20%">
+                                                            Fullname
+                                                        </th>
+                                                        <th style="width: 10%">
+                                                            Gender
+                                                        </th>
+                                                        <th style="width: 5%">
+                                                            Age
+                                                        </th>
+                                                        <th style="width: 5%" class="">
+                                                            Title
+                                                        </th>
+                                                        <th style="width: 5%" class="text-center">
+                                                            Status
+                                                        </th>
+                                                        <th style="width: 15%" class="text-center">
 
-                                                        <td>
-                                                            <%= student.age %>
-                                                        </td>
-                                                        <td>
-                                                            102
-                                                        </td>
-                                                        <td class="project-state">
-                                                            <span class="badge <%= student.status === true ? 'badge-success' : 'badge-danger' %> ">
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% clss.students.forEach((student, i)=> { %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= i + 1 %>
+                                                            </td>
+                                                            <td>
+                                                                <%= student.firstname + ' ' + student.lastname %>
+                                                            </td>
+                                                            <td class="text-capitalize">
+                                                                <%= student.gender %>
+                                                            </td>
+
+                                                            <td>
+                                                                <%= student.age %>
+                                                            </td>
+                                                            <td>
+                                                                <%= student.title %>
+                                                            </td>
+                                                            <td class="project-state">
+                                                                <span class="badge <%= student.status === true ? 'badge-success' : 'badge-danger' %> ">
                                                                 <%= student.status === true ? 'Active' : 'InActive' %>
                                                              </span>
-                                                        </td>
-                                                        <td>
-                                                            <a class="btn btn-primary btn-block" href="/students/<%= student._id %>/profile">
-                                                                <i class="fas fa-folder">
+                                                            </td>
+                                                            <td>
+                                                                <a class="btn btn-primary btn-block" href="/students/<%= student._id %>/profile">
+                                                                    <i class="fas fa-folder">
                                                       </i> View
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <% }) %>
-                                            </tbody>
-                                        </table>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-
                                     <!-- //SETTINGS SECTION -->
                                     <div class="tab-pane" id="settings">
                                         <form id="quickForm" action="/students" method="POST">

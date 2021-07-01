@@ -35,8 +35,8 @@
                                     <%= student.firstname + ' ' + student.lastname %>
                                 </h3>
 
-                                <p class="text-muted text-center">ID NO:
-                                    <%= student.stdID %>
+                                <p class="text-muted text-center text-capitalize">
+                                    <%= student.title %>
                                 </p>
 
                             </div>
@@ -68,30 +68,44 @@
                                             <%= student.age %>
                                         </a>
                                     </li>
-                                    <li class="list-group-item">
-                                        <b>Class:</b> <a class="float-right">102 Room</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Parent: </b>
-                                        <a class="float-right">
-                                            <%= student.parent.firstname + ' ' +  student.parent.lastname%>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Phone: </b>
-                                        <a class="float-right">
-                                            <%= student.parent.phone%>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Teacher: </b> <a class="float-right">Anas Yusuf Ali</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Status: </b>
-                                        <span class="badge float-right <%= student.status === true ? 'badge-success' : 'badge-danger' %> ">
+                                    <% if(student.class){ %>
+                                        <li class="list-group-item">
+                                            <b>Shift:</b>
+                                            <a class="float-right text-capitalize">
+                                                <%= student.class.section %>
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Class:</b>
+                                            <a class="float-right">
+                                                <%= student.class.name %>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                                            <li class="list-group-item">
+                                                <b>Parent: </b>
+                                                <a class="float-right">
+                                                    <%= student.parent.firstname + ' ' +  student.parent.lastname%>
+                                                </a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>Phone: </b>
+                                                <a class="float-right">
+                                                    <%= student.parent.phone%>
+                                                </a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>Teacher: </b>
+                                                <a class="float-right">
+                                                    <%= student.class.teacher.firstname + ' ' + student.class.teacher.lastname %>
+                                                </a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>Status: </b>
+                                                <span class="badge float-right <%= student.status === true ? 'badge-success' : 'badge-danger' %> ">
                                             <%= student.status === true ? 'Active' : 'InActive' %>
                                          </span>
-                                    </li>
+                                            </li>
                                 </ul>
 
                             </div>

@@ -39,10 +39,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <% for(let parent of parents){ %>
+                                            <% parents.forEach((parent, i)=> {  %>
                                                 <tr>
                                                     <td>
-                                                        <%= parent.stdID %>
+                                                        <%= i + 1 %>
                                                     </td>
                                                     <td>
                                                         <%= parent.firstname + ' ' + parent.lastname %>
@@ -73,7 +73,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <% } %>
+                                                <% }) %>
                                         </tbody>
                                         <tfoot>
                                             <tr>

@@ -23,74 +23,164 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Students List</h3>
+                                <h3 class="card-title"> Students List</h3>
+                            </div>
+                            <div class="card-header p-2">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item"><a class="nav-link active" href="#activeStd" data-toggle="tab">Active</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#inActiveStd" data-toggle="tab">In Active</a></li>
+                                </ul>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Full Name</th>
-                                            <th>Phones</th>
-                                            <th>Age</th>
-                                            <th>Gender</th>
-                                            <th>Status</th>
-                                            <th class="text-center">Tools For Edit</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% if(students.length !== 0){ %>
-                                            <% for(let student of students){ %>
+                                <div class="tab-content">
+                                    <div class="active tab-pane" id="activeStd">
+                                        <div class="table-success lead text-left mb-2">
+                                            <h3 class="pl-2">Active Students</h3>
+                                        </div>
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
                                                 <tr>
-                                                    <td>
-                                                        <%= student.stdID %>
-                                                    </td>
-                                                    <td>
-                                                        <%= student.firstname + ' ' + student.lastname %>
-                                                    </td>
-                                                    <td>
-                                                        <%= student.phone %>
-                                                    </td>
-                                                    <td>
-                                                        <%= student.age %>
-                                                    </td>
-                                                    <td>
-                                                        <%= student.gender %>
-                                                    </td>
-                                                    <td>
-                                                        <%= student.status %>
-                                                    </td>
-                                                    <td class="project-actions text-center">
-                                                        <a class="btn btn-primary btn-sm" href="/students/<%= student._id%>/profile">
-                                                            <i class="fas fa-folder">
-                                                    </i> View
-                                                        </a>
-                                                        <a class="btn btn-info btn-sm" href="#">
-                                                            <i class="fas fa-pencil-alt">
-                                                    </i> Edit
-                                                        </a>
-                                                        <a class="btn btn-danger btn-sm" href="#">
-                                                            <i class="fas fa-trash">
-                                                    </i> Delete
-                                                        </a>
-                                                    </td>
+                                                    <th>#</th>
+                                                    <th>Full Name</th>
+                                                    <th>Phones</th>
+                                                    <th>Age</th>
+                                                    <th>Gender</th>
+                                                    <th>Status</th>
+                                                    <th class="text-center">Tools For Edit</th>
                                                 </tr>
-                                                <% } %>
-                                                    <% } %>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Full Name</th>
-                                            <th>Phones</th>
-                                            <th>Age</th>
-                                            <th>Gender</th>
-                                            <th>Status</th>
-                                            <th class="text-center">Tools For Edit</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                                            </thead>
+                                            <tbody>
+                                                <% if(students){ %>
+                                                    <% students.forEach((student, i)=> { %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= i + 1 %>
+                                                            </td>
+                                                            <td>
+                                                                <%= student.firstname + ' ' + student.lastname %>
+                                                            </td>
+                                                            <td>
+                                                                <%= student.parent.phone %>
+                                                            </td>
+                                                            <td>
+                                                                <%= student.age %>
+                                                            </td>
+                                                            <td class="text-capitalize">
+                                                                <%= student.gender %>
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge <%= student.status === true ? 'badge-success' : 'badge-danger' %> ">
+                                                                    <%= student.status === true ? 'Active' : 'InActive' %>
+                                                                 </span>
+                                                            </td>
+                                                            <td class="project-actions text-center">
+                                                                <a class="btn btn-primary btn-sm" href="/students/<%= student._id%>/profile">
+                                                                    <i class="fas fa-folder">
+                                                                    </i> View
+                                                                </a>
+                                                                <a class="btn btn-info btn-sm" href="#">
+                                                                    <i class="fas fa-pencil-alt">
+                                                                    </i> Edit
+                                                                </a>
+                                                                <a class="btn btn-danger btn-sm" href="#">
+                                                                    <i class="fas fa-trash">
+                                                                                                </i> Delete
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+
+                                                            <% } %>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Full Name</th>
+                                                    <th>Phones</th>
+                                                    <th>Age</th>
+                                                    <th>Gender</th>
+                                                    <th>Status</th>
+                                                    <th class="text-center">Tools For Edit</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+
+                                    <div class="tab-pane" id="inActiveStd">
+                                        <div class="table-danger text-left mb-2">
+                                            <h3 class="pl-2">In Active Students</h3>
+                                        </div>
+
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Full Name</th>
+                                                    <th>Phones</th>
+                                                    <th>Age</th>
+                                                    <th>Gender</th>
+                                                    <th>Status</th>
+                                                    <th class="text-center">Tools For Edit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% if(inActiveStds.length !== 0){ %>
+                                                    <% inActiveStds.forEach((student, i)=> { %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= i + 1 %>
+                                                            </td>
+                                                            <td>
+                                                                <%= student.firstname + ' ' + student.lastname %>
+                                                            </td>
+                                                            <td>
+                                                                <%= student.parent.phone %>
+                                                            </td>
+                                                            <td>
+                                                                <%= student.age %>
+                                                            </td>
+                                                            <td>
+                                                                <%= student.gender %>
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge <%= student.status === true ? 'badge-success' : 'badge-danger' %> ">
+                                                                    <%= student.status === true ? 'Active' : 'InActive' %>
+                                                                 </span>
+                                                            </td>
+                                                            <td class="project-actions text-center">
+                                                                <a class="btn btn-primary btn-sm" href="/students/<%= student._id%>/profile">
+                                                                    <i class="fas fa-folder">
+                                                </i> View
+                                                                </a>
+                                                                <a class="btn btn-info btn-sm" href="#">
+                                                                    <i class="fas fa-pencil-alt">
+                                                </i> Edit
+                                                                </a>
+                                                                <a class="btn btn-danger btn-sm" href="#">
+                                                                    <i class="fas fa-trash">
+                                                </i> Delete
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <% }) %>
+
+                                                            <% } %>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Full Name</th>
+                                                    <th>Phones</th>
+                                                    <th>Age</th>
+                                                    <th>Gender</th>
+                                                    <th>Status</th>
+                                                    <th class="text-center">Tools For Edit</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                         </div>

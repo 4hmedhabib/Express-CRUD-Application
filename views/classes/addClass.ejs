@@ -1,0 +1,66 @@
+<%- layout ('./layouts/boilerplate') %>
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Classes Registration</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-12">
+                        <!-- jquery validation -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Class Information</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form id="quickForm" action="/classes" method="POST">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" name="class[name]" class="form-control" id="name" placeholder="Enter class name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="section">Section</label>
+                                        <select id="section" name="class[section]" class="form-control custom-select">
+                                      <option selected disabled>Select one</option>
+                                      <option value="morning">Morning</option>
+                                      <option value="afternoon">Afternoon</option>
+                                    </select>
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <label for="teacher">Teacher</label>
+                                        <input type="text" name="class[teacher]" class="form-control" id="teacher" placeholder="Teacher Phone (252)">
+                                    </div> -->
+                                    <div class="form-group">
+                                        <label for="details">Details</label>
+                                        <input type="text" name="class[details]" class="form-control" id="details" placeholder="Details About The Class...">
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Create</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
