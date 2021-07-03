@@ -44,13 +44,17 @@ app.get('/', (req, res) => {
 });
 
 app.use('/students', studentsRoute);
-
 app.use('/classes', classesRoute);
+app.use('/teachers', teachersRoute);
+app.use('/parents', parentsRoute);
 
-app.use('/teachers', teachersRoute)
+app.get('/test', (req, res)=> {
+    res.render('test')
+});
 
-app.use('/parents', parentsRoute)
-
+app.post('/test', (req, res)=> {
+    res.send(req.body)
+});
 
 app.listen(3000, () => {
     console.log('Server Running PORT: 3000')
