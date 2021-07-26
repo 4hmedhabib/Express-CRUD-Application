@@ -17,12 +17,68 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <%- include('./partials/dash-statistics') %>
-                    <!-- /.row -->
-
-                    <!-- Main row -->
-                    <%- include('./partials/dash-main') %>
-                        <!-- /.row (main row) -->
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3><%= students.length %> </h3>
+                
+                                <p>Total Students</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <a href="/students" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3><%= classes.length %></h3>
+                
+                                <p>Total Classes</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-school"></i>
+                            </div>
+                            <a href="/classes" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3><%= teachers.length %> </h3>
+                
+                                <p>Total Teachers</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <a href="/teachers" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3><%= parents.length %> </h3>
+                
+                                <p>Total Parents</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-people-arrows"></i>
+                            </div>
+                            <a href="/parents" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                </div>
             </div>
             <!-- /.container-fluid -->
         </section>
