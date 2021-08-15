@@ -27,11 +27,11 @@
                                 </div>
 
                                 <h3 class="profile-username text-center">
-                                    <%= clss.name %>
+                                     <%= clss.name %>
                                 </h3>
 
                                 <p class="text-muted text-center text-capitalize">
-                                    <%= clss.title %>
+                                     <%= clss.title %> 
                                 </p>
 
                             </div>
@@ -42,8 +42,8 @@
                         <!-- About Me Box -->
                         <div class="card card-primary ">
                             <div class="card-header">
-                                <h3 class="card-title">About
-                                    <%= clss.title %>
+                                <h3 class="card-title text-capitalize">About
+                                    <%= clss.title %> 
                                 </h3>
                             </div>
                             <!-- /.card-header -->
@@ -54,37 +54,37 @@
                                     <li class="list-group-item">
                                         <b>Students: </b>
                                         <a class="float-right">
-                                            <%= clss.students.length %>
+                                             <%= clss.students.length  %> 
                                         </a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Shift:</b>
                                         <a class="float-right text-capitalize">
-                                            <%= clss.section %>
+                                           <%= clss.section %> 
                                         </a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Teacher:</b>
                                         <a class="float-right">
-                                            <%= clss.teacher.firstname + ' ' +  clss.teacher.lastname%>
+                                            <%= clss.teacher ? clss.teacher.firstname + ' ' +  clss.teacher.lastname : 'Looma Diwaan Galin' %> 
                                         </a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Details: </b>
                                         <a class="float-right">
-                                            <%= clss.details%>
+                                            <%= clss.details %>
                                         </a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Teacher Phone: </b>
                                         <a class="float-right">
-                                            <%= clss.teacher.phone %>
+                                            <%= clss.teacher ? clss.teacher.phone  : 'Looma Diwaan Galin' %> 
                                         </a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Status: </b>
-                                        <span class="badge float-right <%= clss.status === true ? 'badge-success' : 'badge-danger' %> ">
-                                            <%= clss.status === true ? 'Active' : 'InActive' %>
+                                        <span class="badge float-right  <%= clss.status === true ? 'badge-success' : 'badge-danger' %>   ">
+                                             <%= clss.status === true ? 'Active' : 'InActive'  %> 
                                          </span>
                                     </li>
                                 </ul>
@@ -140,28 +140,28 @@
                                                     <% clss.students.forEach((student, i)=> { %>
                                                         <tr>
                                                             <td>
-                                                                <%= i + 1 %>
+                                                                 <!-- i + 1 %> -->
                                                             </td>
                                                             <td>
-                                                                <%= student.firstname + ' ' + student.lastname %>
+                                                                 <!-- student.firstname + ' ' + student.lastname %> -->
                                                             </td>
                                                             <td class="text-capitalize">
-                                                                <%= student.gender %>
+                                                                 <!-- student.gender %> -->
                                                             </td>
 
                                                             <td>
-                                                                <%= student.age %>
+                                                                 <!-- student.age %> -->
                                                             </td>
                                                             <td>
-                                                                <%= student.title %>
+                                                                 <!-- student.title %> -->
                                                             </td>
                                                             <td class="project-state">
-                                                                <span class="badge <%= student.status === true ? 'badge-success' : 'badge-danger' %> ">
-                                                                <%= student.status === true ? 'Active' : 'InActive' %>
+                                                                <!-- <span class="badge  student.status === true ? 'badge-success' : 'badge-danger' %> "> -->
+                                                                 <!-- student.status === true ? 'Active' : 'InActive' %> -->
                                                              </span>
                                                             </td>
                                                             <td>
-                                                                <a class="btn btn-primary btn-block" href="/students/<%= student._id %>/profile">
+                                                                <!-- <a class="btn btn-primary btn-block" href="/students/ student._id %>/profile"> -->
                                                                     <i class="fas fa-folder">
                                                       </i> View
                                                                 </a>
