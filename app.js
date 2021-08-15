@@ -1,58 +1,61 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const path = require("path");
-const ejsMate = require("ejs-mate");
-const mongoose = require("mongoose");
-const Student = require("./models/students/student");
-const Parent = require("./models/parents/parent");
-const Class = require("./models/classes/class");
-const Teacher = require("./models/teachers/teacher");
+const path = require('path');
+const ejsMate = require('ejs-mate');
+const mongoose = require('mongoose');
+const methodOverride = require('method-override');
+
+const Student = require('./models/students/student');
+const Parent = require('./models/parents/parent');
+const Class = require('./models/classes/class');
+const Teacher = require('./models/teachers/teacher');
 
 const db = mongoose
-  .connect("mongodb://localhost:27017/expressCrud", {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  })
-  .then(() => {
-    console.log("DATABASE SUCCESSFULLY CONNECTED!!!");
-  })
-  .catch((err) => {
-    console.log("CONNECTION ERROR!!!");
-  });
+	.connect('mongodb://localhost:27017/expressCrud', {
+		useNewUrlParser: true,
+		useCreateIndex: true,
+		useUnifiedTopology: true,
+		useFindAndModify: false
+	})
+	.then(() => {
+		console.log('DATABASE SUCCESSFULLY CONNECTED!!!');
+	})
+	.catch((err) => {
+		console.log('CONNECTION ERROR!!!');
+	});
 
-app.engine("ejs", ejsMate);
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/views"));
-app.use(express.static(path.join(__dirname, "public")));
+app.engine('ejs', ejsMate);
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
-const studentsRoute = require("./routes/students");
-const classesRoute = require("./routes/classes");
-const teachersRoute = require("./routes/teachers");
-const parentsRoute = require("./routes/parents");
-const indexRoute = require("./routes/index");
+const studentsRoute = require('./routes/students');
+const classesRoute = require('./routes/classes');
+const teachersRoute = require('./routes/teachers');
+const parentsRoute = require('./routes/parents');
+const indexRoute = require('./routes/index');
 
 app.use((req, res, next) => {
-  res.locals.currentPath = req.path;
-  next();
+	res.locals.currentPath = req.path;
+	next();
 });
 
-app.use("/", indexRoute);
-app.use("/students", studentsRoute);
-app.use("/classes", classesRoute);
-app.use("/teachers", teachersRoute);
-app.use("/parents", parentsRoute);
+app.use('/', indexRoute);
+app.use('/students', studentsRoute);
+app.use('/classes', classesRoute);
+app.use('/teachers', teachersRoute);
+app.use('/parents', parentsRoute);
 
-app.get("/test", (req, res) => {
-  res.render("test");
+app.get('/test', (req, res) => {
+	res.render('test');
 });
 
-app.post("/test", (req, res) => {
-  res.send(req.body);
+app.post('/test', (req, res) => {
+	res.send(req.body);
 });
 
 app.listen(3000, () => {
-  console.log("Server Running PORT: 3000");
+	console.log('Server Running PORT: 3000');
 });

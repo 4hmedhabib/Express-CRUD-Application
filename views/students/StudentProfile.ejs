@@ -119,16 +119,16 @@
                         <div class="card">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
-                                    <li class="nav-item"><a class="nav-link <% isEdit === true  ? '' : 'active' %>" href="#activity" data-toggle="tab">Activity</a></li>
+                                    <li class="nav-item"><a class="nav-link <% isEdit  ? '' : 'active' %>" href="#activity" data-toggle="tab">Activity</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
-                                    <li class="nav-item"><a class="nav-link <% isEdit === true  ? 'active' : '' %>" href="#settings" data-toggle="tab">Settings</a></li>
+                                    <li class="nav-item"><a class="nav-link <% isEdit   ? 'active' : '' %>" href="#settings" data-toggle="tab">Settings</a></li>
                                 </ul>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="tab-content">
                                     <!-- //ACTIVITY SECTION -->
-                                    <div class="<% isEdit === true  ? '' : 'active' %>  tab-pane" id="activity">
+                                    <div class="active tab-pane" id="activity">
                                         <h1>Here is Activity</h1>
                                     </div>
 
@@ -139,7 +139,7 @@
                                     </div>
 
                                     <!-- //SETTINGS SECTION -->
-                                    <div class="<% isEdit === true  ? 'active' : '' %>  tab-pane" id="settings">
+                                    <div class=" tab-pane" id="settings">
                                         <form id="quickForm" action="/students" method="POST">
                                             <div class="card-body">
                                                 <div class="form-group">

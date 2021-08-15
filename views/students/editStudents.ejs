@@ -1,0 +1,98 @@
+<% layout('./layouts/boilerplate') %>
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Project Edit</h1>
+          </div>
+          
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Edit Student </h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+                <form id="quickForm" action="/students/<%= student._id %>/?_method=PUT" method="POST">
+                        <div class="form-group">
+                            <label for="firstname">Firstname</label>
+                            <input type="text" name="student[firstname]" class="form-control" id="fristname" placeholder="Enter firstname" value=<%= student.firstname %> >
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Lastname</label>
+                            <input type="text" name="student[lastname]" class="form-control" id="lastname" placeholder="Lastname" value=<%= student.lastname %> >
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="number" name="student[phone]" class="form-control" id="phone" placeholder="Phone (+252)" disabled value=<%= student.parent.phone %> d>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" name="student[age]" class="form-control" id="age" placeholder="Age" value=<%=student.age%>>
+                        </div>
+                        <div class="form-group">
+                            <label for="class">Class </label>
+                            <select id="class" name="student[class]" class="form-control custom-select"  >
+                          <option disabled>Select one</option>
+                            <% for(let clss of classes){ %> 
+                                <option <%  if(student.class._id.equals(clss.id)){ %>
+                                    selected <% } %>  value="<%=clss._id%>"><%= clss.name %></option>
+                              <%}%>
+              
+                        </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="student[gender]" class="form-control custom-select" value=<%= student.gender %>>
+                          <option  disabled>Select one</option>
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                        </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Status</label>
+                            <select id="gender" name="student[status]" class="form-control custom-select" value=<%= student.status %>>
+                          <option  disabled>Select one</option>
+                          <option value="true">Active</option>
+                          <option value="false">In Active</option>
+                        </select>
+                        </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer d-flex justify-content-around">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <div class="col-sm-4">
+                            <a href="/students/" class="btn btn-block btn-danger">Cancel</a>
+                          </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+      
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+</div>
+

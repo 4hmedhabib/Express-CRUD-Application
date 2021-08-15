@@ -75,6 +75,41 @@ module.exports.studentProfile = async (req, res) => {
 			path: 'teacher'
 		}
 	});
-	const isEdit = true;
+	const isEdit = false;
 	res.render('students/StudentProfile', { student, isEdit });
+};
+
+// Edit Section
+
+module.exports.studentRenderEdit = async (req, res) => {
+	const { id } = req.params;
+	const classes = await Class.find({});
+	const student = await Student.findById(id).populate('parent').populate({
+		path: 'class',
+		populate: {
+			path: 'teacher'
+		}
+	});
+	stdClass = student.class.name;
+	res.render('students/editStudents', { student, stdClass, classes });
+};
+
+module.exports.editStudent = async (req, res) => {
+	const { id } = req.params;
+	const classId = req.body.student.class;
+
+	const student = await Student.findById(id);
+	const findClass = await Class.findById(classId);
+	console.log('Class Before Update', findClass);
+	console.log('Student Before Update', student);
+	const stdUpdated = await Student.findByIdAndUpdate(id, req.body.student);
+
+	findClass.students.push(student._id);
+
+	await stdUpdated.save();
+	await findClass.save();
+
+	console.log('Class After Update', findClass);
+	console.log('Student After Update', student);
+	res.redirect(`/students/${id}/profile`);
 };
