@@ -95,21 +95,28 @@ module.exports.studentRenderEdit = async (req, res) => {
 };
 
 module.exports.editStudent = async (req, res) => {
-	const { id } = req.params;
-	const classId = req.body.student.class;
+	// const { id } = req.params;
+	// const classId = req.body.student.class;
+	// const clss = await Class.findById(req.body.currentClass);
+	// console.log('Deleted Class Info : ', clss);
 
-	const student = await Student.findById(id);
-	const findClass = await Class.findById(classId);
-	console.log('Class Before Update', findClass);
-	console.log('Student Before Update', student);
-	const stdUpdated = await Student.findByIdAndUpdate(id, req.body.student);
+	// const currentClass = await Class.findByIdAndUpdate(req.body.currentClass, { $pull: { students: { _id: id } } });
 
-	findClass.students.push(student._id);
+	// const student = await Student.findById(id);
+	// const findClass = await Class.findById(classId);
 
-	await stdUpdated.save();
-	await findClass.save();
+	// console.log('Class Before Update', findClass);
+	// console.log('Student Before Update', student);
 
-	console.log('Class After Update', findClass);
-	console.log('Student After Update', student);
+	// const stdUpdated = await Student.findByIdAndUpdate(id, req.body.student);
+
+	// findClass.students.push(student._id);
+	// await currentClass.save();
+	// await stdUpdated.save();
+	// await findClass.save();
+	// console.log('Deleted Class Info After: ', currentClass);
+	// console.log('Class After Update', findClass);
+	// console.log('Student After Update', student);
+
 	res.redirect(`/students/${id}/profile`);
 };

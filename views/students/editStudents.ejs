@@ -49,6 +49,7 @@
                         </div>
                         <div class="form-group">
                             <label for="class">Class </label>
+                            <input type='hidden' name="currentClass" value=<%= student.class._id %> >
                             <select id="class" name="student[class]" class="form-control custom-select"  >
                           <option disabled>Select one</option>
                             <% for(let clss of classes){ %> 
